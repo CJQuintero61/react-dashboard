@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+/*
+  App.js
+  
+  this is the js for start of the webpage
+*/
+import { useState } from 'react';
 import './App.css';
 
+import Header from './components/Header';
+
 function App() {
+
+  // currentView - the view currently being displayed (Classes on page load)
+  // setView - updates currentView and re-renders the app to show the new view
+  const [currentView, setView] = useState('Classes');
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header currentView={currentView} onChangeView={setView} />
     </div>
   );
 }
