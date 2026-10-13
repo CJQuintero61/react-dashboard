@@ -7,6 +7,7 @@ import { useState } from 'react';
 import './App.css';
 
 import Header from './components/Header';
+import TaskList from './components/TaskList';
 
 function App() {
 
@@ -63,7 +64,7 @@ function App() {
       <main>
         {/* toggle between the 3 different views */}
         {currentView === 'Classes' && <p>Classes Section</p>}
-        {currentView === 'To-Do' && <p>To-Do Section</p>}
+        {currentView === 'To-Do' && <TaskList tasks={tasks} />}
         {currentView === 'Projects' && <p>Projects Section</p>}
       </main>
     </div>
