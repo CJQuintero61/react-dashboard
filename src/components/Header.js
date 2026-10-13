@@ -31,16 +31,19 @@ function Header({ currentView, onChangeView  }) {
             text='Classes'
             type='button'
             variant='nav'
+            onClick={() => onChangeView('Classes')}
           />
           <Button
             text='To-Do'
             type='button'
             variant='nav'
+            onClick={() => onChangeView('To-Do')}
           />
           <Button
             text='Projects'
             type='button'
             variant='nav'
+            onClick={() => onChangeView('Projects')}
           />
         </nav>
       </header>
