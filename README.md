@@ -7,4 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## To Run
 
-1. `npm start`
+1. `npm i` to install node packaged
+2. `npm install prop-types` to intall the prop types package
+3. `npm start` to start local server
+4. go to `http://localhost:3000/` to see the page

@@ -1,38 +1,226 @@
+/*
+  App.css
+
+  Styles for the Student Productivity Dashboard.
+  Colors are stored as CSS variables so a dark theme
+  can swap them all at once.
+*/
+
+/* ---------- Theme colors ---------- */
+
+/* light theme (default) */
 .App {
-  text-align: center;
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --text: #1f2328;
+  --text-muted: #6b7280;
+  --border: #e2e4e8;
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --danger: #dc2626;
+  --danger-hover: #b91c1c;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* dark theme - applied when the App div has the "dark" class */
+.App.dark {
+  --bg: #16181d;
+  --surface: #1f2228;
+  --text: #e6e8eb;
+  --text-muted: #9ca3af;
+  --border: #33363d;
+  --primary: #818cf8;
+  --primary-hover: #a5b4fc;
+  --danger: #f87171;
+  --danger-hover: #fca5a5;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* ---------- Base layout ---------- */
+
+* {
+  box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #282c34;
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+.App {
   min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+/* ---------- Header ---------- */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px 24px;
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.header nav {
+  display: flex;
+  gap: 8px;
+}
+
+/* ---------- Buttons ---------- */
+
+/* shared styles for every button */
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+/* default: solid primary button (e.g. "Add Task") */
+.btn-default {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+.btn-default:hover {
+  background-color: var(--primary-hover);
+}
+
+/* nav: subtle tab-style buttons in the header */
+.btn-nav {
+  background-color: transparent;
+  color: var(--text-muted);
+}
+
+.btn-nav:hover {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* for later: highlights the current view's nav button */
+.btn-nav.active {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+/* delete: outlined red button */
+.btn-delete {
+  background-color: transparent;
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+.btn-delete:hover {
+  background-color: var(--danger);
+  color: #ffffff;
+}
+
+/* ---------- Task form ---------- */
+
+.task-form {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.task-form label {
   display: flex;
   flex-direction: column;
+  gap: 4px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* the task name field takes up the extra space */
+.task-form label:first-child {
+  flex: 1;
+  min-width: 200px;
+}
+
+.task-form input {
+  padding: 8px 10px;
+  font-size: 0.95rem;
+  color: var(--text);
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.task-form input:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: -1px;
+}
+
+/* ---------- Task list ---------- */
+
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 12px;
+  padding: 12px 16px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
 }
 
-.App-link {
-  color: #61dafb;
+/* ---------- General text ---------- */
+
+main p {
+  color: var(--text-muted);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* ---------- Small screens ---------- */
+
+@media (max-width: 600px) {
+  /* stack the title above the nav */
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
   }
-  to {
-    transform: rotate(360deg);
+
+  /* stack the form fields and make them full width */
+  .task-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .task-form label:first-child {
+    min-width: 0;
   }
 }
