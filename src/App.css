@@ -278,7 +278,7 @@ main {
   padding: 20px;
   background-color: var(--surface);
   border: 1px solid var(--border);
-  border-left: 4px solid var(--primary);
+  border-left: 6px solid var(--primary);
   border-radius: 8px;
   color: var(--text-muted);
   font-size: 0.95rem;
