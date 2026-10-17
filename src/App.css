@@ -300,6 +300,30 @@ main {
   color: var(--text);
 }
 
+/* ---------- About view ---------- */
+
+/* a single card that matches the class cards, sized for reading */
+.about-text {
+  margin: 0;
+  padding: 24px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--primary);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.7;
+  /* keep lines a comfortable length on wide screens */
+  max-width: 65ch;
+}
+
+@media (max-width: 600px) {
+  .about-text {
+    padding: 16px;
+    font-size: 0.95rem;
+  }
+}
+
 /* ---------- General text ---------- */
 
 main p {
