@@ -19,7 +19,7 @@ function ClassList({ classList }) {
   */
 
   // it's worth mentioning that classes cannot be added or removed
-  // so there will always be 4 classes which are coded in App.js
+  // so there will always be 4 classes which are coded in data.js
 
   return (
     <ul className="class-list">

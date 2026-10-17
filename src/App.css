@@ -128,7 +128,7 @@ main {
   color: var(--text);
 }
 
-/* for later: highlights the current view's nav button */
+/* highlights the current view's nav button */
 .btn-nav.active {
   background-color: var(--primary);
   color: #ffffff;

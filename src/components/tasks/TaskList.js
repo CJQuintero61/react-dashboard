@@ -14,6 +14,7 @@ function TaskList({ tasks, markComplete, deleteTask }) {
 
     Args:
       tasks (list) - the list of tasks to show
+      markComplete (function) - callback from App to mark a task complete
       deleteTask (function) - the callback function from App for
         deleting a task
     
@@ -47,6 +48,7 @@ function TaskList({ tasks, markComplete, deleteTask }) {
 
 TaskList.propTypes = {
   tasks: PropTypes.array.isRequired,
+  markComplete: PropTypes.func.isRequired,
   deleteTask: PropTypes.func.isRequired,
 };
 
