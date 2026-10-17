@@ -19,6 +19,9 @@
   --primary-hover: #4338ca;
   --danger: #dc2626;
   --danger-hover: #b91c1c;
+
+  /* tells the browser to draw native controls (date picker, scrollbars) in light colors */
+  color-scheme: light;
 }
 
 /* dark theme - applied when the App div has the "dark" class */
@@ -32,6 +35,9 @@
   --primary-hover: #a5b4fc;
   --danger: #f87171;
   --danger-hover: #fca5a5;
+
+  /* draw native controls in dark colors so the calendar icon stays visible */
+  color-scheme: dark;
 }
 
 /* ---------- Base layout ---------- */
@@ -79,6 +85,14 @@ main {
 .header nav {
   display: flex;
   gap: 8px;
+}
+
+/* holds the theme toggle on the right side of the header */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 /* ---------- Buttons ---------- */
@@ -132,6 +146,18 @@ main {
 .btn-delete:hover {
   background-color: var(--danger);
   color: #ffffff;
+}
+
+/* theme: outlined button so the toggle doesn't look like a nav tab.
+   must come after .btn so its border isn't overridden by "border: none" */
+.btn-theme {
+  background-color: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-theme:hover {
+  background-color: var(--bg);
 }
 
 /* ---------- Task form ---------- */

@@ -6,10 +6,10 @@
 import { useState } from 'react';
 import './App.css';
 
-import Header from './components/Header';
-import TaskList from './components/TaskList';
-import TaskForm from './components/TaskForm';
-import ClassList from './components/ClassList';
+import Header from './components/layout/Header';
+import TaskList from './components/tasks/TaskList';
+import TaskForm from './components/tasks/TaskForm';
+import ClassList from './components/classes/ClassList';
 
 function App() {
 
@@ -71,7 +71,9 @@ function App() {
         other topics all combined into the curriculum.`
       }
     ]
-  )
+  );
+  // for the theme toggle - it starts in dark mode
+  const [theme, setTheme] = useState('dark');
 
   function addTask(text, due) {
     /*
@@ -107,9 +109,24 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== id));
   }
 
+  function toggleTheme() {
+    /*
+      toggles the current theme from light -> dark
+      or dark -> light
+    */
+    
+    // if in dark mode, set to light mode, else set to dark mode
+    setTheme(currentTheme => (currentTheme === 'dark' ? 'light' : 'dark'));
+  }
+
   return (
-    <div className="App">
-      <Header currentView={currentView} onChangeView={setView} />
+    <div className={`App ${theme}`}>
+      <Header
+        currentView={currentView}
+        onChangeView={setView}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
 
       <main>
         {/* toggle between the 3 different views */}

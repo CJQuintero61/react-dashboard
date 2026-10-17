@@ -6,7 +6,7 @@
 
 import PropTypes from 'prop-types';
 
-import Button from './Button';
+import Button from '../common/Button';
 
 function TaskItem({ task, deleteTask }) {
   /*

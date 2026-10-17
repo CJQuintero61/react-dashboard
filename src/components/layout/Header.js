@@ -5,18 +5,23 @@
 */
 import PropTypes from 'prop-types';
 
-import Button from './Button';
+import Button from '../common/Button';
 
 
-function Header({ currentView, onChangeView }) {
+function Header({ currentView, onChangeView, theme, onToggleTheme }) {
   /*
     creates the header component with the page title
     and nav buttons to change the current view.
 
     Args:
       currentView (string) - the name of the current view being displayed
+
       onChangeView (function) - the callback function from App that takes a view
         name and updates the current view
+
+      theme (state) - the current theme state
+
+      onToggleTheme (function) - the callback function from App to change the theme
     
     Returns:
       <header> element with buttons
@@ -46,6 +51,18 @@ function Header({ currentView, onChangeView }) {
           onClick={() => onChangeView('Projects')}
         />
       </nav>
+      {/*
+        this is the theme toggle button in the header but outside of <nav>
+      */}
+      <div className="header-actions">
+        <Button
+          // Dynamically update the theme toggle text depending on what is currently showing
+          text={theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+          type='button'
+          variant='nav'
+          onClick={onToggleTheme}
+        />
+      </div>
     </header>
   );
 }
