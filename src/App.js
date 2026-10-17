@@ -8,6 +8,7 @@ import './App.css';
 
 import Header from './components/layout/Header';
 import TaskList from './components/tasks/TaskList';
+import TaskSummary from './components/tasks/TaskSummary';
 import TaskForm from './components/tasks/TaskForm';
 import ClassList from './components/classes/ClassList';
 
@@ -39,7 +40,7 @@ function App() {
       }
     ]
   );
-  const [classes, setClasses] = useState(
+  const [classes] = useState(
     // my 4 classes to show on the classes page
     [
       {
@@ -91,12 +92,12 @@ function App() {
     const newTask = {
       id: newID,
       text: text,
-      due: due || 'No due date',
+      due: due || '',
       completed: false
     };
 
     // keep the current tasks and add the new one
-    setTasks([...tasks, newTask]);
+    setTasks(prev => [...prev, newTask]);
   }
 
   function deleteTask(id) {
@@ -106,7 +107,7 @@ function App() {
       Args:
         id (int | str) - the id of the task to delete 
     */
-    setTasks(tasks.filter((task) => task.id !== id));
+    setTasks(prev => prev.filter((task) => task.id !== id));
   }
 
   function toggleTheme() {
@@ -118,6 +119,29 @@ function App() {
     // if in dark mode, set to light mode, else set to dark mode
     setTheme(currentTheme => (currentTheme === 'dark' ? 'light' : 'dark'));
   }
+
+  function markComplete(id) {
+    /*
+      marks a task as complete/incomplete
+
+      Args:
+        id id (int | str) - the task id
+    */
+
+    // make a new array where the matching task gets a copy with
+    // completed flipped, and every other task stays the same
+    setTasks(prev =>
+      // for each task in the previous task list, find the one to mark
+      // complete by id and set it to the opposite bool value
+      // and keep the other tasks the same
+      prev.map(task =>
+        task.id === id ? { ...task, completed: !task.completed } : task
+      )
+    );
+  }
+
+  // tasks completed
+  const completedCount = tasks.filter(task => task.completed).length;
 
   return (
     <div className={`App ${theme}`}>
@@ -143,7 +167,8 @@ function App() {
             <>
               <h2 className="view-title">To-Do</h2>
               <TaskForm addTask={addTask} />
-              <TaskList tasks={tasks} deleteTask={deleteTask} />
+              <TaskSummary completed={completedCount} total={tasks.length} />
+              <TaskList tasks={tasks} markComplete={markComplete} deleteTask={deleteTask} />
             </>
           )
         }

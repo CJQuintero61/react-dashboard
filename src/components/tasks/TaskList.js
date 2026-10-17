@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 import TaskItem from './TaskItem';
 
-function TaskList({ tasks, deleteTask }) {
+function TaskList({ tasks, markComplete, deleteTask }) {
   /*
     this component creates the task list
 
@@ -37,6 +37,7 @@ function TaskList({ tasks, deleteTask }) {
         <TaskItem
           key={task.id}
           task={task}
+          markComplete={markComplete}
           deleteTask={deleteTask}
         />
       ))}

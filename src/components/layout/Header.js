@@ -19,7 +19,7 @@ function Header({ currentView, onChangeView, theme, onToggleTheme }) {
       onChangeView (function) - the callback function from App that takes a view
         name and updates the current view
 
-      theme (state) - the current theme state
+      theme (string) - 'light' or 'dark'
 
       onToggleTheme (function) - the callback function from App to change the theme
     
@@ -35,19 +35,20 @@ function Header({ currentView, onChangeView, theme, onToggleTheme }) {
         <Button
           text='Classes'
           type='button'
-          variant='nav'
+          // update the current the variant to 'nav active' to show the active page
+          variant={currentView === 'Classes' ? 'nav active' : 'nav'}
           onClick={() => onChangeView('Classes')}
         />
         <Button
           text='To-Do'
           type='button'
-          variant='nav'
+          variant={currentView === 'To-Do' ? 'nav active' : 'nav'}
           onClick={() => onChangeView('To-Do')}
         />
         <Button
           text='Projects'
           type='button'
-          variant='nav'
+          variant={currentView === 'Projects' ? 'nav active' : 'nav'}
           onClick={() => onChangeView('Projects')}
         />
       </nav>
@@ -59,7 +60,7 @@ function Header({ currentView, onChangeView, theme, onToggleTheme }) {
           // Dynamically update the theme toggle text depending on what is currently showing
           text={theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
           type='button'
-          variant='nav'
+          variant='theme'
           onClick={onToggleTheme}
         />
       </div>
@@ -71,6 +72,8 @@ function Header({ currentView, onChangeView, theme, onToggleTheme }) {
 Header.propTypes = {
   currentView: PropTypes.string.isRequired,
   onChangeView: PropTypes.func.isRequired,
+  theme: PropTypes.oneOf(['light', 'dark']).isRequired,
+  onToggleTheme: PropTypes.func.isRequired,
 };
 
 export default Header;

@@ -224,6 +224,32 @@ main {
   border-radius: 8px;
 }
 
+/* checkbox and text sit side by side */
+.task-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.task-check input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+/* cross out and fade completed tasks */
+.task-item.completed .task-text {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.task-summary {
+  margin: 0 0 12px;
+  font-size: 0.9rem;
+}
+
 /* ---------- View titles ---------- */
 
 /* page heading at the top of each view (e.g. "Classes") */
