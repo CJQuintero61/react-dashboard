@@ -57,3 +57,10 @@ export const CLASSES = [
     other topics all combined into the curriculum.`
   }
 ];
+
+export const ABOUT_PROJECT = `
+This project is to learn the basics of React and using React States to manage
+and update the page instead of using manual DOM manipulation. The other learning objectives
+include data flow through passing props around the components, creating/using reusable components,
+creating/using dynamic arrays, altering the view without using a router/changing pages.
+`

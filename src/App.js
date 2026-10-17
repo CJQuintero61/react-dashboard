@@ -12,7 +12,7 @@ import TaskSummary from './components/tasks/TaskSummary';
 import TaskForm from './components/tasks/TaskForm';
 import ClassList from './components/classes/ClassList';
 
-import { TASKS, CLASSES, } from './data';
+import { TASKS, CLASSES, ABOUT_PROJECT } from './data';
 
 function App() {
 
@@ -102,6 +102,9 @@ function App() {
       <main>
         {/* toggle between the 3 different views */}
         {
+          // using this syntax, if the condition passes then the fragement
+          // and nested elements are shown and this is cleaner and shorter
+          // than if/else blocks
           currentView === 'Classes' && (
             <>
               <h2 className="view-title">Classes</h2>
@@ -123,6 +126,7 @@ function App() {
           currentView === 'About' && (
             <>
               <h2 className="view-title">About this Project</h2>
+              <p className="about-text">{ABOUT_PROJECT}</p>
             </>
           )
         }

@@ -46,10 +46,10 @@ function Header({ currentView, onChangeView, theme, onToggleTheme }) {
           onClick={() => onChangeView('To-Do')}
         />
         <Button
-          text='Projects'
+          text='About'
           type='button'
-          variant={currentView === 'Projects' ? 'nav active' : 'nav'}
-          onClick={() => onChangeView('Projects')}
+          variant={currentView === 'About' ? 'nav active' : 'nav'}
+          onClick={() => onChangeView('About')}
         />
       </nav>
       {/*
