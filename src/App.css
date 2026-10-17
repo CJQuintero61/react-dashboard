@@ -198,6 +198,56 @@ main {
   border-radius: 8px;
 }
 
+/* ---------- View titles ---------- */
+
+/* page heading at the top of each view (e.g. "Classes") */
+.view-title {
+  margin: 0 0 20px;
+  padding-bottom: 12px;
+  font-size: 1.6rem;
+  color: var(--text);
+  border-bottom: 2px solid var(--border);
+}
+
+/* ---------- Class list ---------- */
+
+/* grid of cards - fits as many 300px columns as there is room for,
+   and drops to 1 column on small screens without a media query */
+.class-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 16px;
+}
+
+.class-item {
+  padding: 20px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+/* lift the card slightly on hover */
+.class-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* course name stands out more than the description */
+.class-name {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  color: var(--text);
+}
+
 /* ---------- General text ---------- */
 
 main p {

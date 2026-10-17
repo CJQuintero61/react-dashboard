@@ -9,6 +9,7 @@ import './App.css';
 import Header from './components/Header';
 import TaskList from './components/TaskList';
 import TaskForm from './components/TaskForm';
+import ClassList from './components/ClassList';
 
 function App() {
 
@@ -38,6 +39,39 @@ function App() {
       }
     ]
   );
+  const [classes, setClasses] = useState(
+    // my 4 classes to show on the classes page
+    [
+      {
+        id: 1,
+        courseName: 'Principles of Programming Languages',
+        desc: `Learn how the compiler turns high-level source code into machine code
+        and the many parts of the compiler, the syntax of programming languages and language design,
+        parse trees, and other language design topics.`
+      },
+      {
+        id: 2,
+        courseName: 'Internet Programming',
+        desc: `Internet Programming teaches you about front-end development and later about full-stack
+        development by using hands-on learning and projects. I will eventually be making a full-stack
+        app with a backend, frontend, database, and api.`
+      },
+      {
+        id: 3,
+        courseName: 'Algorithms',
+        desc: `Your typical DSA class that every computer science student takes. We learn a few of the common
+        searching and sorting algorithms, basic and some advanced data structures, and discuss mock interview
+        questions to prepare for future job interviews that test algorithm knowledge.`
+      },
+      {
+        id: 4,
+        courseName: 'Introduction to Computer Vision and Image Processing',
+        desc: `We learn about linear classifiers, neural networks, CNNs, and other similar
+        computer vision topics. This introductory course has math, coding, deep learning, and
+        other topics all combined into the curriculum.`
+      }
+    ]
+  )
 
   function addTask(text, due) {
     /*
@@ -80,20 +114,28 @@ function App() {
       <main>
         {/* toggle between the 3 different views */}
         {
-          currentView === 'Classes' &&
-          <p>Classes Section</p>
+          currentView === 'Classes' && (
+            <>
+              <h2 className="view-title">Classes</h2>
+              <ClassList classList={classes} />
+            </>
+          )
         }
         {
           currentView === 'To-Do' && (
             <>
+              <h2 className="view-title">To-Do</h2>
               <TaskForm addTask={addTask} />
               <TaskList tasks={tasks} deleteTask={deleteTask} />
             </>
           )
         }
         {
-          currentView === 'Projects' &&
-          <p>Projects Section</p>
+          currentView === 'Projects' && (
+            <>
+              <h2 className="view-title">Projects</h2>
+            </>
+          )
         }
       </main>
     </div>
